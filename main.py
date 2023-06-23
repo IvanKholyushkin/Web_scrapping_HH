@@ -76,10 +76,9 @@ if __name__ == "__main__":
     headers = fake_headers.Headers(browser="firefox", os="win")
     headers_dict = headers.generate()
     URL = get_url("+".join(input("Введите ключевые слова ").split()))
-    print(URL)
     count_pages = get_count_pages(URL, headers_dict)
-    print(count_pages)
     get_vacancies(URL, count_pages)
     with open("vacancy.json", "w") as outfile:
         json.dump(resulting_list, outfile, indent=6, ensure_ascii=False)
+    print(f"Было загруженно {len(resulting_list)} вакансий")
 
