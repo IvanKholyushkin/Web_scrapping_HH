@@ -84,5 +84,5 @@ if __name__ == "__main__":
     get_vacancies(URL, count_pages)
     with open("vacancy.json", "w") as outfile:
         json.dump(resulting_list, outfile, indent=6, ensure_ascii=False)
-    print(f"Было загруженно {len(resulting_list)} вакансий")
+    print(f"Было загружено {len(resulting_list)} вакансий")
 
