@@ -5,6 +5,7 @@ import fake_headers
 from tqdm import tqdm
 
 
+
 def get_url(key_words):
     URL = f"https://spb.hh.ru/search/vacancy?text={key_words}&area=1&area=2&"
     return URL
@@ -76,7 +77,10 @@ if __name__ == "__main__":
     headers = fake_headers.Headers(browser="firefox", os="win")
     headers_dict = headers.generate()
     URL = get_url("+".join(input("Введите ключевые слова ").split()))
-    count_pages = get_count_pages(URL, headers_dict)
+    try:
+        count_pages = get_count_pages(URL, headers_dict)
+    except AttributeError:
+        count_pages = 1
     get_vacancies(URL, count_pages)
     with open("vacancy.json", "w") as outfile:
         json.dump(resulting_list, outfile, indent=6, ensure_ascii=False)
